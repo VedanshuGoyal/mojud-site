@@ -1,0 +1,805 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Bulk WhatsApp messaging on Meta's official WhatsApp Business Platform for government offices, municipalities, schools and businesses: ₹1.10 per announcement and ₹0.16 per personal message, including GST.">
+<meta name="theme-color" content="#F2F3EF">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bulk WhatsApp messaging | MOJUD">
+<meta property="og:description" content="Bulk WhatsApp messaging on Meta's official WhatsApp Business Platform for government offices, municipalities, schools and businesses: ₹1.10 per announcement and ₹0.16 per personal message, including GST.">
+<meta property="og:url" content="https://mojud.life/whatsapp">
+<link rel="canonical" href="https://mojud.life/whatsapp">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>Bulk WhatsApp messaging | MOJUD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Latin:wdth,wght@75..125,400..800&family=Martian+Mono:wght@400;500&family=Mukta:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@500..700&text=%E0%A4%AE%E0%A5%8C%E0%A4%9C%E0%A5%82%E0%A4%A6%E0%A4%B9%E0%A4%BF%E0%A4%A8%E0%A5%8D%E0%A4%A6%E0%A5%80&display=swap">
+<style>
+:root {
+  --paper: #F2F3EF;
+  --surface: #FFFFFF;
+  --ink: #161A2C;
+  --muted: #565C6E;
+  --line: #D9DBD3;
+  --line-strong: #B9BCB3;
+  --accent: #B8235A;
+  --accent-ink: #FFFFFF;
+  --hl: #B8235A;
+  --pass: #1D7650;
+  --warn: #9A4F00;
+  --band: #161A2C;
+  --band-raise: #22273D;
+  --band-ink: #EEF0F4;
+  --band-muted: #A9AEC0;
+  --band-line: #2E3450;
+  --band-accent: #F2669A;
+  --band-accent-ink: #1A0A12;
+  --weave-b: #161A2C;
+  --shadow: 0 1px 0 rgba(22, 26, 44, .04), 0 18px 40px -18px rgba(22, 26, 44, .22);
+
+  --f-display: "Anek Latin", "Anek Devanagari", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --f-body: "Mukta", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --f-mono: "Martian Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --gutter: clamp(16px, 4vw, 48px);
+  --max: 1200px;
+  --head-h: 68px;
+}
+/* Light is the default. Dark is opt-in through the theme button (or the viewer's explicit choice):
+   a monochrome black-and-grey palette. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #0A0A0A;
+  --surface: #141414;
+  --ink: #EDEDED;
+  --muted: #9E9E9E;
+  --line: #262626;
+  --line-strong: #3A3A3A;
+  --accent: #E6E6E6;
+  --accent-ink: #0A0A0A;
+  --hl: #8C8C8C;
+  --pass: #6CC08B;
+  --warn: #D9A25F;
+  --band: #111111;
+  --band-raise: #1A1A1A;
+  --band-ink: #EDEDED;
+  --band-muted: #9E9E9E;
+  --band-line: #2A2A2A;
+  --band-accent: #E6E6E6;
+  --band-accent-ink: #0A0A0A;
+  --weave-b: #3A3A3A;
+  --shadow: 0 1px 0 rgba(0, 0, 0, .4), 0 18px 44px -18px rgba(0, 0, 0, .8);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 1.0625rem/1.6 var(--f-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+p { margin: 0; }
+h1, h2, h3 {
+  margin: 0;
+  font-family: var(--f-display);
+  font-weight: 640;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+.band :focus-visible { outline-color: var(--band-accent); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+.wrap { max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
+.dev { font-family: "Anek Devanagari", "Noto Sans Devanagari", var(--f-body); font-weight: 600; }
+
+.skip {
+  position: absolute; left: 12px; top: -80px; z-index: 50;
+  background: var(--ink); color: var(--paper); padding: 10px 14px; border-radius: 4px;
+  font: 600 .95rem/1 var(--f-display); text-decoration: none;
+}
+.skip:focus { top: 12px; }
+
+/* Woven border, after the Maheshwari sarees of Khargone district */
+.weave {
+  height: 8px;
+  background: conic-gradient(var(--accent) 25%, var(--weave-b) 0 50%, var(--accent) 0 75%, var(--weave-b) 0) 0 0 / 12px 8px;
+}
+
+/* Header */
+.site-head {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  background: color-mix(in oklab, var(--paper) 88%, transparent);
+  -webkit-backdrop-filter: saturate(1.3) blur(12px);
+  backdrop-filter: saturate(1.3) blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color .2s;
+}
+.site-head.is-stuck { border-bottom-color: var(--line); }
+.head-row { display: flex; align-items: center; gap: 20px; min-height: var(--head-h); }
+.brand { display: inline-flex; align-items: baseline; gap: 10px; text-decoration: none; }
+.brand-lat { font: 800 1.4rem/1 var(--f-display); font-stretch: 125%; letter-spacing: .07em; }
+.brand-dev { font-size: 1.05rem; line-height: 1; color: var(--muted); }
+#site-nav { margin-left: auto; }
+#site-nav ul { display: flex; gap: 2px; list-style: none; margin: 0; padding: 0; }
+#site-nav a {
+  display: block; padding: 9px 12px; border-radius: 4px; text-decoration: none;
+  font: 500 1rem/1 var(--f-display); color: var(--muted);
+  transition: color .15s, background-color .15s;
+}
+#site-nav a:hover { color: var(--ink); background: color-mix(in oklab, var(--ink) 6%, transparent); }
+.head-actions { display: flex; align-items: center; gap: 8px; }
+.icon-btn {
+  width: 40px; height: 40px; display: inline-grid; place-items: center; flex: none;
+  border: 1px solid var(--line); border-radius: 4px; background: transparent; color: var(--ink); cursor: pointer;
+  transition: border-color .15s;
+}
+.icon-btn:hover { border-color: var(--line-strong); }
+.menu-btn { display: none; width: auto; padding-inline: 12px; font: 500 .95rem/1 var(--f-display); gap: 8px; grid-auto-flow: column; }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 20px; border-radius: 4px; border: 1.5px solid transparent;
+  font: 600 1.02rem/1 var(--f-display); text-decoration: none; cursor: pointer;
+  transition: background-color .2s, border-color .2s, color .2s;
+}
+.btn-sm { padding: 10px 14px; font-size: .95rem; }
+.btn-accent { background: var(--accent); color: var(--accent-ink); }
+.btn-accent:hover { background: color-mix(in oklab, var(--accent) 86%, var(--ink)); }
+.btn-ghost { background: transparent; color: var(--ink); border-color: var(--line-strong); }
+.btn-ghost:hover { border-color: var(--ink); }
+.btn .arr { transition: transform .2s; }
+.btn:hover .arr { transform: translateX(3px); }
+.band .btn-accent { background: var(--band-accent); color: var(--band-accent-ink); }
+.band .btn-accent:hover { background: color-mix(in oklab, var(--band-accent) 85%, var(--band-ink)); }
+.band .btn-ghost { color: var(--band-ink); border-color: var(--band-line); }
+.band .btn-ghost:hover { border-color: var(--band-ink); }
+
+.eyebrow {
+  font: 500 .75rem/1.4 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
+}
+.band .eyebrow { color: var(--band-muted); }
+
+/* Hero */
+.hero {
+  display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: clamp(36px, 5vw, 72px); align-items: start;
+  padding-block: clamp(48px, 7vw, 96px) clamp(64px, 8vw, 112px);
+}
+.hero h1 {
+  margin-top: 22px;
+  font-size: clamp(2.5rem, 5.3vw, 4.5rem); font-stretch: 106%; font-weight: 650; line-height: 1.0; letter-spacing: -0.02em;
+}
+.hero h1 .hl { color: var(--hl); }
+.lead { margin-top: 26px; max-width: 34em; font-size: 1.1875rem; line-height: 1.6; color: var(--muted); }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+.hero-tags {
+  display: flex; flex-wrap: wrap; gap: 8px 0; list-style: none; margin: 40px 0 0; padding: 0;
+  font: 400 .75rem/1.4 var(--f-mono); color: var(--muted);
+}
+.hero-tags li:not(:last-child)::after { content: "/"; margin-inline: 12px; color: var(--line-strong); }
+.hero-tags .dev { font-size: .95rem; line-height: 1; font-weight: 600; color: var(--ink); }
+
+/* Live readout */
+.readout {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow);
+  padding: 20px 22px 18px; font-family: var(--f-mono);
+}
+.ro-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.ro-title { font-size: .72rem; line-height: 1.4; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; }
+.ro-time { font-size: .68rem; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.ro-list { margin: 0; }
+.ro-row {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: center;
+  padding-block: 11px; border-bottom: 1px dashed var(--line);
+}
+.ro-row dt { font-size: .74rem; line-height: 1.4; color: var(--ink); }
+.ro-row dt small { display: block; margin-top: 2px; font-size: .64rem; color: var(--muted); }
+.ro-row dd { margin: 0; display: flex; align-items: center; gap: 10px; }
+.ro-v { font-size: .92rem; font-weight: 500; font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+.ro-mark {
+  width: 16px; height: 16px; flex: none; border-radius: 50%; display: inline-grid; place-items: center;
+  opacity: 0; transform: scale(.4); transition: opacity .25s, transform .3s cubic-bezier(.3, 1.6, .5, 1);
+}
+.is-ok .ro-mark, .is-bad .ro-mark { opacity: 1; transform: none; }
+.is-ok .ro-mark { background: var(--pass); }
+.is-ok .ro-mark::after {
+  content: ""; width: 7px; height: 4px; border-left: 1.75px solid var(--surface); border-bottom: 1.75px solid var(--surface);
+  transform: translateY(-1px) rotate(-45deg);
+}
+.is-bad .ro-mark { background: var(--warn); }
+.is-bad .ro-mark::after { content: "!"; font: 700 .62rem/1 var(--f-mono); color: var(--surface); }
+.ro-foot { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 16px; }
+.ro-foot p { font-size: .64rem; line-height: 1.5; color: var(--muted); max-width: 26em; }
+.ro-foot .btn { font-size: .85rem; padding: 9px 12px; flex: none; }
+
+/* Sections */
+.section { padding-block: clamp(72px, 9vw, 128px); }
+[id] { scroll-margin-top: calc(var(--head-h) + 12px); }
+.sec-head {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 18px 56px; align-items: end;
+  margin-bottom: clamp(36px, 5vw, 60px);
+}
+.sec-head h2 { margin-top: 14px; font-size: clamp(2rem, 3.9vw, 3.1rem); font-stretch: 104%; }
+.sec-intro { max-width: 34em; color: var(--muted); font-size: 1.0625rem; }
+.band .sec-intro { color: var(--band-muted); }
+
+/* Services */
+.svc-list { list-style: none; margin: 0; padding: 0; }
+.svc {
+  display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 5fr) minmax(0, 3fr); gap: 14px 44px;
+  padding-block: 30px; border-top: 1px solid var(--line);
+}
+.svc:last-child { border-bottom: 1px solid var(--line); }
+.svc h3 { font-size: clamp(1.45rem, 2.2vw, 1.75rem); font-weight: 600; line-height: 1.1; }
+.svc-for { margin-top: 10px; font: 400 .72rem/1.5 var(--f-mono); color: var(--muted); }
+.svc p.desc { color: var(--muted); max-width: 32em; }
+.svc ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; align-content: start; font: 400 .74rem/1.45 var(--f-mono); }
+.svc li { display: grid; grid-template-columns: 14px 1fr; gap: 6px; }
+.svc li::before { content: ""; width: 6px; height: 6px; margin-top: .45em; background: var(--accent); }
+.svc li .dev { font-size: .9rem; line-height: 1; }
+
+/* Work band */
+.band { background: var(--band); color: var(--band-ink); border-block: 1px solid var(--band-line); }
+.work-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 64px); align-items: start; }
+.frame { border: 1px solid var(--band-line); border-radius: 10px; overflow: hidden; background: var(--band-raise); box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .55); }
+.frame-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 9px 10px 9px 14px; background: var(--band-raise); border-bottom: 1px solid var(--band-line); }
+.frame-url { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font: 400 .7rem/1.4 var(--f-mono); color: var(--band-muted); }
+.frame-url b { font-weight: 500; color: var(--band-ink); }
+.seg { display: inline-flex; flex: none; padding: 3px; gap: 2px; border: 1px solid var(--band-line); border-radius: 6px; }
+.seg button {
+  border: 0; border-radius: 4px; padding: 6px 10px; cursor: pointer; background: transparent; color: var(--band-muted);
+  font: 500 .72rem/1 var(--f-mono); transition: background-color .2s, color .2s;
+}
+.seg button.dev { font-size: .9rem; line-height: .8; }
+.seg button[aria-pressed="true"] { background: var(--band-accent); color: var(--band-accent-ink); }
+.frame-shot { position: relative; aspect-ratio: 1200 / 750; max-width: 100%; background: #F6F4FB; }
+.frame-shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top left; opacity: 0; transition: opacity .35s ease; }
+.frame-shot img.is-on { opacity: 1; }
+.frame-cap { margin-top: 14px; font: 400 .7rem/1.6 var(--f-mono); color: var(--band-muted); max-width: 60em; }
+
+.work-facts { display: grid; gap: 28px; }
+.stats { margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 24px; }
+.stats div { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: 6px; padding-top: 14px; border-top: 1px solid var(--band-line); }
+.stats dd { margin: 0; font: 600 clamp(2.2rem, 3.6vw, 2.9rem)/1 var(--f-display); font-stretch: 110%; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.stats dd span { font-size: .45em; font-stretch: 100%; letter-spacing: 0; margin-left: 4px; color: var(--band-muted); }
+.stats dt { font-size: .92rem; line-height: 1.45; color: var(--band-muted); }
+.feat { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; font-size: 1rem; }
+.feat li { display: grid; grid-template-columns: 18px 1fr; gap: 8px; }
+.feat li::before { content: ""; width: 7px; height: 7px; margin-top: .6em; border: 1.5px solid var(--band-accent); transform: rotate(45deg); }
+.work-links { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* Partners */
+.partner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(32px, 6vw, 88px); align-items: start; }
+.partner h2 { margin-top: 14px; font-size: clamp(2rem, 3.9vw, 3.1rem); font-stretch: 104%; }
+.partner .sec-intro { margin-top: 22px; }
+.partner .btn { margin-top: 30px; }
+.promises { margin: 0; display: grid; }
+.promises div { padding-block: 20px; border-top: 1px solid var(--line); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 6px 28px; }
+.promises div:last-child { border-bottom: 1px solid var(--line); }
+.promises dt { font: 600 1.15rem/1.3 var(--f-display); }
+.promises dd { margin: 0; color: var(--muted); }
+
+/* Steps */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 44px 36px; }
+.steps li { position: relative; padding-top: 22px; border-top: 1px solid var(--line); }
+.steps li::before { content: ""; position: absolute; left: 0; top: -2px; width: 36px; height: 3px; background: var(--accent); }
+.step-n { font: 500 .72rem/1 var(--f-mono); letter-spacing: .06em; color: var(--accent); }
+.steps h3 { margin-top: 12px; font-size: 1.45rem; font-weight: 600; }
+.steps p { margin-top: 10px; color: var(--muted); }
+
+/* Standards */
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+table { width: 100%; min-width: 680px; border-collapse: collapse; font-size: 1rem; }
+th, td { text-align: left; vertical-align: top; padding: 16px 20px; border-bottom: 1px solid var(--line); }
+thead th { font: 500 .7rem/1.4 var(--f-mono); letter-spacing: .07em; text-transform: uppercase; color: var(--muted); background: color-mix(in oklab, var(--paper) 50%, var(--surface)); }
+tbody th { font: 600 1.08rem/1.3 var(--f-display); white-space: nowrap; }
+tbody td { color: var(--muted); line-height: 1.5; }
+tbody tr:last-child > * { border-bottom: 0; }
+
+/* Team */
+.team { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
+.person { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: clamp(22px, 3vw, 32px); display: grid; gap: 18px; align-content: start; }
+.person-top { display: flex; align-items: center; gap: 16px; }
+.mono-av {
+  width: 56px; height: 56px; flex: none; border-radius: 50%; display: grid; place-items: center;
+  background: color-mix(in oklab, var(--accent) 14%, var(--surface)); color: var(--accent);
+  font: 700 1.15rem/1 var(--f-display); font-stretch: 115%; letter-spacing: .04em;
+}
+.person h3 { font-size: 1.5rem; font-weight: 600; }
+.role { margin-top: 4px; font: 400 .72rem/1.4 var(--f-mono); color: var(--muted); letter-spacing: .04em; }
+.person p.bio { color: var(--muted); max-width: 40em; }
+.creds { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.creds li { font: 400 .7rem/1 var(--f-mono); padding: 8px 10px; border: 1px solid var(--line); border-radius: 4px; color: var(--ink); }
+
+.todo {
+  display: inline-block; font: 500 .74rem/1.4 var(--f-mono); color: var(--warn);
+  border: 1px dashed currentColor; border-radius: 4px; padding: 3px 8px;
+}
+.band .todo { color: var(--band-accent); }
+
+/* Contact */
+.contact { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 88px); align-items: start; }
+.contact h2 { margin-top: 14px; font-size: clamp(2.3rem, 4.6vw, 3.7rem); font-stretch: 106%; }
+.contact .sec-intro { margin-top: 22px; }
+.c-list { margin: 0; display: grid; }
+.c-list div { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 16px; padding-block: 18px; border-top: 1px solid var(--band-line); }
+.c-list div:last-child { border-bottom: 1px solid var(--band-line); }
+.c-list dt { font: 500 .72rem/1.9 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--band-muted); }
+.c-list dd { margin: 0; font-size: 1.08rem; }
+.c-val { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+.c-val a {
+  font: 600 clamp(1.2rem, 2vw, 1.45rem)/1.2 var(--f-display); font-variant-numeric: tabular-nums;
+  text-decoration: underline; text-decoration-color: var(--band-accent); text-decoration-thickness: 1.5px; text-underline-offset: 5px;
+}
+.c-val a:hover { color: var(--band-accent); }
+.copy-btn {
+  font: 500 .68rem/1 var(--f-mono); padding: 7px 10px; border: 1px solid var(--band-line); border-radius: 4px;
+  background: transparent; color: var(--band-muted); cursor: pointer; transition: color .15s, border-color .15s;
+}
+.copy-btn:hover { color: var(--band-ink); border-color: var(--band-muted); }
+.copy-btn.is-done { color: var(--band-accent); border-color: var(--band-accent); }
+
+/* Footer */
+.site-foot { background: var(--paper); }
+.foot-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) auto; gap: 28px 48px; padding-block: 44px 56px; align-items: start; }
+.foot-brand { display: flex; align-items: baseline; gap: 10px; }
+.foot-brand .brand-lat { font-size: 1.15rem; }
+.foot-def { margin-top: 10px; font-size: .95rem; color: var(--muted); }
+.foot-def i { color: var(--ink); }
+.foot-meta { display: grid; gap: 8px; font-size: .95rem; color: var(--muted); }
+.foot-nav ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.foot-nav a { font: 500 .95rem/1.4 var(--f-display); color: var(--muted); text-decoration: none; }
+.foot-nav a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+
+/* Responsive */
+@media (max-width: 960px) {
+  .menu-btn { display: inline-grid; }
+  #site-nav {
+    display: none; position: absolute; left: 0; right: 0; top: 100%;
+    background: var(--paper); border-bottom: 1px solid var(--line); padding: 8px var(--gutter) 16px;
+  }
+  #site-nav.open { display: block; }
+  #site-nav ul { flex-direction: column; }
+  #site-nav a { padding: 12px 4px; font-size: 1.1rem; }
+  .head-actions { margin-left: auto; }
+  .hero, .work-grid, .partner, .contact { grid-template-columns: minmax(0, 1fr); }
+  .sec-head { grid-template-columns: minmax(0, 1fr); align-items: start; }
+  .svc { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .svc > div:first-child { grid-column: 1 / -1; }
+  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .team { grid-template-columns: minmax(0, 1fr); }
+  .foot-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .foot-nav { grid-column: 1 / -1; }
+  .foot-nav ul { grid-auto-flow: column; justify-content: start; gap: 6px 20px; }
+}
+@media (max-width: 620px) {
+  .head-cta { display: none; }
+  .svc { grid-template-columns: minmax(0, 1fr); }
+  .steps { grid-template-columns: minmax(0, 1fr); }
+  .promises div { grid-template-columns: minmax(0, 1fr); }
+  .c-list div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .foot-grid { grid-template-columns: minmax(0, 1fr); }
+  .foot-nav ul { grid-auto-flow: row; }
+  .ro-foot { flex-direction: column; align-items: flex-start; }
+  .frame-url { display: none; }
+  .frame-bar { justify-content: flex-end; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+</style>
+<style>
+/* Page-specific styles; the shared stylesheet comes from page.html at build time */
+#site-nav a[aria-current="page"] { color: var(--ink); background: color-mix(in oklab, var(--ink) 6%, transparent); }
+
+/* Sample chat */
+.chat {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.chat-head { display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-bottom: 1px solid var(--line); }
+.chat-av {
+  width: 38px; height: 38px; flex: none; border-radius: 50%; display: grid; place-items: center;
+  background: color-mix(in oklab, var(--accent) 14%, var(--surface)); color: var(--accent);
+  font: 700 .85rem/1 var(--f-display); letter-spacing: .04em;
+}
+.chat-name { font: 600 1rem/1.2 var(--f-display); display: flex; align-items: center; gap: 6px; }
+.chat-tick { width: 15px; height: 15px; flex: none; border-radius: 50%; background: var(--pass); display: inline-grid; place-items: center; }
+.chat-tick::after { content: ""; width: 6px; height: 3.5px; border-left: 1.6px solid var(--surface); border-bottom: 1.6px solid var(--surface); transform: translateY(-1px) rotate(-45deg); }
+.chat-sub { font: 400 .66rem/1.4 var(--f-mono); color: var(--muted); }
+.chat-tag { margin-left: auto; font: 500 .62rem/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); border: 1px dashed var(--line-strong); border-radius: 4px; padding: 5px 7px; }
+.chat-body { display: grid; gap: 14px; padding: 20px 18px; background: color-mix(in oklab, var(--paper) 70%, var(--surface)); }
+.bubble { max-width: 88%; display: grid; gap: 6px; }
+.bubble p {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 4px 12px 12px 12px;
+  padding: 10px 13px; font-size: .98rem; line-height: 1.5;
+}
+.bubble.me { justify-self: end; }
+.bubble.me p { border-radius: 12px 4px 12px 12px; background: color-mix(in oklab, var(--accent) 9%, var(--surface)); }
+.bubble-meta { display: flex; justify-content: space-between; gap: 12px; font: 400 .64rem/1.4 var(--f-mono); color: var(--muted); }
+.bubble-meta b { font-weight: 500; color: var(--accent); }
+.bubble.me .bubble-meta { justify-content: flex-end; }
+.chat-foot { padding: 12px 18px 14px; border-top: 1px solid var(--line); font: 400 .66rem/1.55 var(--f-mono); color: var(--muted); }
+
+/* Pricing */
+.price-table table { min-width: 0; }
+.price-table tbody th { white-space: normal; font-size: 1.04rem; }
+.price-table tbody th small { display: block; margin-top: 3px; font: 400 .8rem/1.4 var(--f-body); color: var(--muted); }
+.price-table td.amt { color: var(--ink); font: 600 1.08rem/1.3 var(--f-display); font-variant-numeric: tabular-nums; white-space: nowrap; text-align: right; }
+.price-table td.amt small { display: block; font: 400 .72rem/1.4 var(--f-mono); color: var(--muted); }
+.price-note { margin-top: 16px; display: flex; gap: 10px; align-items: baseline; font-size: 1rem; }
+.price-note::before { content: ""; width: 7px; height: 7px; flex: none; transform: rotate(45deg) translateY(-2px); background: var(--accent); }
+
+/* Cost band */
+.stats-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.band-note { margin-top: 26px; font-size: .95rem; color: var(--band-muted); max-width: 46em; }
+
+/* Comparison */
+.cmp-table table { min-width: 600px; }
+.cmp-table thead th:not(:first-child) { color: var(--ink); font: 600 1rem/1.3 var(--f-display); letter-spacing: 0; text-transform: none; }
+.cmp-table tbody th { font-size: 1rem; }
+
+/* Included */
+.incl { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
+.incl-card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: clamp(22px, 3vw, 28px); display: grid; gap: 16px; align-content: start; }
+.incl-card h3 { font-size: 1.35rem; font-weight: 600; }
+.incl-price { font: 500 .72rem/1.4 var(--f-mono); letter-spacing: .04em; color: var(--accent); }
+.incl-card ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; color: var(--muted); }
+.incl-card li { display: grid; grid-template-columns: 16px 1fr; gap: 6px; }
+.incl-card li::before { content: ""; width: 6px; height: 6px; margin-top: .6em; background: var(--accent); }
+
+@media (max-width: 960px) {
+  .incl { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 620px) {
+  .stats-3 { grid-template-columns: minmax(0, 1fr); }
+  .price-table th, .price-table td { padding: 14px 14px; }
+  .price-table td.amt { white-space: normal; width: 44%; }
+}
+</style>
+</head>
+<body>
+<div class="site" id="site">
+<a class="skip" href="#main">Skip to content</a>
+<div class="weave" aria-hidden="true"></div>
+
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="brand" href="./" aria-label="MOJUD home">
+      <span class="brand-lat">MOJUD</span><span class="brand-dev dev" lang="hi">मौजूद</span>
+    </a>
+    <nav id="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="./#services">Services</a></li>
+        <li><a href="whatsapp.html" aria-current="page">WhatsApp</a></li>
+        <li><a href="./#work">Work</a></li>
+        <li><a href="./#partners">For agencies</a></li>
+        <li><a href="./#team">Team</a></li>
+      </ul>
+    </nav>
+    <div class="head-actions">
+      <button class="icon-btn" id="theme-btn" type="button" aria-label="Switch to dark theme">
+        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg>
+      </button>
+      <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">
+        <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 17h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Menu
+      </button>
+      <a class="btn btn-accent btn-sm head-cta" href="#contact">Ask for a quote</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero wrap" id="top" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow">Bulk WhatsApp messaging</p>
+      <h1 id="hero-title">Reach every citizen on WhatsApp, <span class="hl">from your own verified number.</span></h1>
+      <p class="lead">We set up and run bulk messaging on Meta's official WhatsApp Business Platform for government offices, municipalities, schools and businesses. Bill reminders, application updates and urgent alerts land in each person's chat. A free WhatsApp Channel carries general news.</p>
+      <div class="cta-row">
+        <a class="btn btn-accent" href="#pricing">See pricing <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="#contact">Ask for a quote</a>
+      </div>
+      <ul class="hero-tags" aria-label="How the service works">
+        <li>Official WhatsApp Business Platform</li>
+        <li>Your number, your account</li>
+        <li>Pay only for delivered messages</li>
+        <li>Hosted in India</li>
+      </ul>
+    </div>
+
+    <aside class="chat" aria-label="Sample messages from a municipal office">
+      <div class="chat-head">
+        <span class="chat-av" aria-hidden="true">MO</span>
+        <div>
+          <p class="chat-name">Municipal Office <span class="chat-tick" aria-hidden="true"></span></p>
+          <p class="chat-sub">Business account</p>
+        </div>
+        <span class="chat-tag">Sample</span>
+      </div>
+      <div class="chat-body">
+        <div class="bubble">
+          <p>Dear Ramesh, property tax of ₹2,400 for property ID 1234 is due on 31 October. Pay at the office or online.</p>
+          <span class="bubble-meta"><b>Personal message · ₹0.16</b><span>10:02</span></span>
+        </div>
+        <div class="bubble">
+          <p>Water supply will be off on Sunday from 10 am to 4 pm in Wards 4 to 7.</p>
+          <span class="bubble-meta"><b>Announcement · ₹1.10</b><span>10:05</span></span>
+        </div>
+        <div class="bubble me">
+          <p>Can I pay the tax online?</p>
+          <span class="bubble-meta"><span>Citizen's reply · 10:07</span></span>
+        </div>
+      </div>
+      <p class="chat-foot">Every message uses a template Meta has approved. Delivery reports show which were sent, delivered, read or failed.</p>
+    </aside>
+  </section>
+
+  <section class="section wrap" id="pricing" aria-labelledby="pricing-title" style="padding-top: 0;">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Pricing</p>
+        <h2 id="pricing-title">One price per delivered message</h2>
+      </div>
+      <p class="sec-intro">All prices include 18% GST and Meta's charges, on one bill from MOJUD.</p>
+    </div>
+    <div class="table-wrap price-table" role="region" aria-labelledby="pricing-title" tabindex="0">
+      <table>
+        <thead>
+          <tr><th scope="col">Item</th><th scope="col" style="text-align: right;">Price</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">One-time setup</th><td class="amt">₹15,000</td></tr>
+          <tr><th scope="row">Dashboard and support</th><td class="amt">₹2,500<small>per month</small></td></tr>
+          <tr><th scope="row">Announcement message<small>General notices to many people</small></th><td class="amt">₹1.10<small>per delivered message</small></td></tr>
+          <tr><th scope="row">Personal message<small>A person's own bill, tax, salary or application</small></th><td class="amt">₹0.16<small>per delivered message</small></td></tr>
+          <tr><th scope="row">Reply to someone who messages first</th><td class="amt">Free<small>first 1,000 a month, then ₹0.16</small></td></tr>
+          <tr><th scope="row">WhatsApp Channel setup<small>Optional</small></th><td class="amt">₹2,500<small>one-time</small></td></tr>
+          <tr><th scope="row">WhatsApp Channel posts</th><td class="amt">Free</td></tr>
+          <tr><th scope="row">New templates drafted by MOJUD</th><td class="amt">₹500<small>each</small></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="price-note">These rates apply up to 3 lakh messages a month. Above that, MOJUD gives a discounted rate.</p>
+  </section>
+
+  <section class="section band" id="cost" aria-labelledby="cost-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">What it costs</p>
+          <h2 id="cost-title">One message to 1,00,000 people</h2>
+        </div>
+        <p class="sec-intro">Send personal messages and urgent alerts to each person, and post general news on a free Channel. The difference adds up quickly.</p>
+      </div>
+      <dl class="stats stats-3">
+        <div><dt>as an announcement message</dt><dd>₹1,10,000</dd></div>
+        <div><dt>as a personal message</dt><dd>₹16,000</dd></div>
+        <div><dt>as a WhatsApp Channel post</dt><dd>₹0</dd></div>
+      </dl>
+      <p class="band-note">Including GST. People who are not on WhatsApp, or are blocked by WhatsApp's daily limit on announcements, are not charged, so real bills are usually lower.</p>
+    </div>
+  </section>
+
+  <section class="section wrap" id="channel" aria-labelledby="channel-title">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Messages or Channel</p>
+        <h2 id="channel-title">Which one to use</h2>
+      </div>
+      <p class="sec-intro">Use paid messages for anything that must reach each person. Use the free Channel for news that people can read when they choose.</p>
+    </div>
+    <div class="table-wrap cmp-table" role="region" aria-labelledby="channel-title" tabindex="0">
+      <table>
+        <thead>
+          <tr><th scope="col"><span class="sr">Feature</span></th><th scope="col">Paid WhatsApp message</th><th scope="col">Free WhatsApp Channel</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Where it arrives</th><td>In each person's chat, with a notification</td><td>In the Channel; followers' notifications are off by default</td></tr>
+          <tr><th scope="row">Name, amount, ID</th><td>Yes, personal to each person</td><td>No, one post for everyone</td></tr>
+          <tr><th scope="row">Replies</th><td>Yes</td><td>No, one-way</td></tr>
+          <tr><th scope="row">Who receives it</th><td>Only people who have agreed</td><td>Anyone who follows</td></tr>
+          <tr><th scope="row">Cost</th><td>Per delivered message</td><td>Free</td></tr>
+          <tr><th scope="row">Best for</th><td>Bills, reminders, urgent alerts</td><td>General news, events, notices</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section wrap" id="included" aria-labelledby="included-title" style="padding-top: 0;">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">What's included</p>
+        <h2 id="included-title">Set up once, run every month</h2>
+      </div>
+      <p class="sec-intro">We handle Meta's verification and approvals, so your staff only write and send.</p>
+    </div>
+    <div class="incl">
+      <article class="incl-card">
+        <div><p class="incl-price">₹15,000 · ONE-TIME</p><h3 style="margin-top: 8px;">Setup</h3></div>
+        <ul>
+          <li>Meta business account and verification, using your documents</li>
+          <li>WhatsApp number registration and display name approval</li>
+          <li>First 5 message templates, written and approved</li>
+          <li>Dashboard set up with your contact list</li>
+          <li>Training for your staff</li>
+        </ul>
+      </article>
+      <article class="incl-card">
+        <div><p class="incl-price">₹2,500 · EVERY MONTH</p><h3 style="margin-top: 8px;">Dashboard and support</h3></div>
+        <ul>
+          <li>Send to everyone or selected groups, schedule messages, read replies</li>
+          <li>Delivery reports: sent, delivered, read, failed</li>
+          <li>Staff can create new templates themselves</li>
+          <li>One monthly statement: messages delivered, credit used and left</li>
+          <li>Hosting in India and support on working days</li>
+        </ul>
+      </article>
+      <article class="incl-card">
+        <div><p class="incl-price">₹2,500 · OPTIONAL</p><h3 style="margin-top: 8px;">WhatsApp Channel</h3></div>
+        <ul>
+          <li>Channel created in your name, with your logo</li>
+          <li>QR codes for notice boards and counters</li>
+          <li>Training for staff to post updates</li>
+          <li>Unlimited posts, free of charge</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section wrap" id="how" aria-labelledby="how-title" style="padding-top: 0;">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">How it works</p>
+        <h2 id="how-title">From signing to first message</h2>
+      </div>
+      <p class="sec-intro">Most of the waiting is on Meta's checks, which usually take a few days.</p>
+    </div>
+    <ol class="steps">
+      <li><p class="step-n">STEP 1</p><h3>Verify</h3><p>We create your Meta business account and verify it with your documents.</p></li>
+      <li><p class="step-n">STEP 2</p><h3>Register</h3><p>Your WhatsApp number is registered, and Meta approves your display name.</p></li>
+      <li><p class="step-n">STEP 3</p><h3>Templates</h3><p>We write your first five message templates. Meta approves each one, usually within a day.</p></li>
+      <li><p class="step-n">STEP 4</p><h3>Contacts</h3><p>We load your contact list, with only the people who have agreed to receive messages.</p></li>
+      <li><p class="step-n">STEP 5</p><h3>Send</h3><p>Your staff send to everyone or to groups, and see who received and read each message.</p></li>
+      <li><p class="step-n">STEP 6</p><h3>Statement</h3><p>Each month you get one statement: messages delivered, credit used and credit left.</p></li>
+    </ol>
+  </section>
+
+  <section class="section wrap" id="terms" aria-labelledby="terms-title" style="padding-top: 0;">
+    <div class="partner">
+      <div>
+        <p class="eyebrow">Good to know</p>
+        <h2 id="terms-title">The rules we work by</h2>
+        <p class="sec-intro">Some of these are WhatsApp's rules, some are the law, and some are ours.</p>
+      </div>
+      <dl class="promises">
+        <div><dt>Official platform only</dt><dd>We use Meta's official WhatsApp Business Platform. Unofficial bulk senders break WhatsApp's terms, and their numbers get banned.</dd></div>
+        <div><dt>Consent first</dt><dd>Messages go only to people who agreed to receive them, through a form, a QR code at your office, or by messaging you first. WhatsApp's rules and the DPDP Act 2023 require it.</dd></div>
+        <div><dt>Delivered messages only</dt><dd>WhatsApp limits how many announcements one person receives per day from all senders. Messages blocked by this limit, or sent to people not on WhatsApp, are not charged.</dd></div>
+        <div><dt>Meta sets the category</dt><dd>Meta decides whether a template is an announcement or a personal message when it approves it.</dd></div>
+        <div><dt>Your account, your number</dt><dd>The WhatsApp account, number, Channel and contact list belong to you. You can remove our access at any time.</dd></div>
+        <div><dt>Prepaid credit</dt><dd>The setup fee is paid before work starts. Message charges are paid in advance as credit and topped up when needed.</dd></div>
+        <div><dt>Rates follow Meta</dt><dd>Prices are based on <a href="https://whatsappbusiness.com/products/platform-pricing/" target="_blank" rel="noopener">Meta's rates</a> as of 10 October 2026. If Meta changes its rates, ours change by the same amount.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section band" id="contact" aria-labelledby="contact-title">
+    <div class="wrap contact">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-title">Ask for a quotation.</h2>
+        <p class="sec-intro">Tell us roughly how many people you message and how often. We reply with a monthly cost estimate and a setup plan, in English or Hindi.</p>
+      </div>
+      <dl class="c-list">
+        <div><dt>Email</dt><dd class="c-val"><a href="mailto:team@mojud.life">team@mojud.life</a><button class="copy-btn" type="button" data-copy="team@mojud.life" data-what="Email address" aria-label="Copy email address">Copy</button></dd></div>
+        <div><dt>Phone</dt><dd class="c-val"><a href="tel:+919425326724">+91 94253 26724</a><button class="copy-btn" type="button" data-copy="+91 94253 26724" data-what="Phone number" aria-label="Copy phone number">Copy</button></dd></div>
+        <div><dt>Based in</dt><dd>Khargone, Madhya Pradesh. We work with clients across India.</dd></div>
+      </dl>
+      <p class="sr" id="copy-status" aria-live="polite"></p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="weave" aria-hidden="true"></div>
+  <div class="wrap foot-grid">
+    <div>
+      <p class="foot-brand"><span class="brand-lat">MOJUD</span><span class="brand-dev dev" lang="hi">मौजूद</span></p>
+      <p class="foot-def"><i>maujūd</i>: present; ready at hand.</p>
+    </div>
+    <div class="foot-meta">
+      <p>© 2026 MOJUD. Udyam-registered micro enterprise, Khargone, Madhya Pradesh. <a href="mailto:team@mojud.life">team@mojud.life</a></p>
+      <p>WhatsApp is a trademark of Meta. MOJUD is not affiliated with or endorsed by Meta.</p>
+    </div>
+    <nav class="foot-nav" aria-label="Footer">
+      <ul>
+        <li><a href="./">Home</a></li>
+        <li><a href="./#services">Services</a></li>
+        <li><a href="#pricing">WhatsApp pricing</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+</div>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  if (!root.lang) root.lang = 'en';
+
+  /* Theme */
+  var themeBtn = document.getElementById('theme-btn');
+  try {
+    var saved = localStorage.getItem('mojud-theme');
+    if (saved && !root.hasAttribute('data-theme')) root.setAttribute('data-theme', saved);
+  } catch (e) {}
+  function isDark() { return root.getAttribute('data-theme') === 'dark'; }
+  function syncTheme() { themeBtn.setAttribute('aria-label', isDark() ? 'Switch to light theme' : 'Switch to dark theme'); }
+  themeBtn.addEventListener('click', function () {
+    var next = isDark() ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('mojud-theme', next); } catch (e) {}
+  });
+  new MutationObserver(syncTheme).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+  syncTheme();
+
+  /* Header */
+  var head = document.querySelector('.site-head');
+  function onScroll() { head.classList.toggle('is-stuck', window.scrollY > 8); }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  var menuBtn = document.getElementById('menu-btn');
+  var nav = document.getElementById('site-nav');
+  function setMenu(open) {
+    nav.classList.toggle('open', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+  }
+  menuBtn.addEventListener('click', function () { setMenu(!nav.classList.contains('open')); });
+  nav.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && nav.classList.contains('open')) { setMenu(false); menuBtn.focus(); }
+  });
+
+  /* Copy contact details */
+  var copyStatus = document.getElementById('copy-status');
+  document.querySelectorAll('.copy-btn').forEach(function (btn) {
+    var timer;
+    function done(msg) {
+      btn.textContent = msg;
+      btn.classList.add('is-done');
+      copyStatus.textContent = btn.getAttribute('data-what') + (msg === 'Copied' ? ' copied' : ' selected; press Ctrl+C to copy');
+      clearTimeout(timer);
+      timer = setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('is-done'); }, 1800);
+    }
+    btn.addEventListener('click', function () {
+      var text = btn.getAttribute('data-copy');
+      var selectIt = function () {
+        var range = document.createRange();
+        range.selectNodeContents(btn.previousElementSibling);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        done('Selected');
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { done('Copied'); }, selectIt);
+      } else {
+        selectIt();
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
