@@ -1,0 +1,1012 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="MOJUD designs and builds accessible, bilingual websites and web portals for government bodies, universities and businesses, to GIGW 3.0 and WCAG 2.1 AA, and hosts them as a managed service provider on MeitY-empanelled cloud.">
+<meta name="theme-color" content="#F2F3EF">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MOJUD">
+<meta property="og:description" content="MOJUD designs and builds accessible, bilingual websites and web portals for government bodies, universities and businesses, to GIGW 3.0 and WCAG 2.1 AA, and hosts them as a managed service provider on MeitY-empanelled cloud.">
+<meta property="og:url" content="https://mojud.life/">
+<meta property="og:image" content="https://mojud.life/assets/ccrh-en.webp">
+<link rel="canonical" href="https://mojud.life/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>MOJUD | Websites and software for public institutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Latin:wdth,wght@75..125,400..800&family=Martian+Mono:wght@400;500&family=Mukta:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@500..700&text=%E0%A4%AE%E0%A5%8C%E0%A4%9C%E0%A5%82%E0%A4%A6%E0%A4%B9%E0%A4%BF%E0%A4%A8%E0%A5%8D%E0%A4%A6%E0%A5%80&display=swap">
+<style>
+:root {
+  --paper: #F2F3EF;
+  --surface: #FFFFFF;
+  --ink: #161A2C;
+  --muted: #565C6E;
+  --line: #D9DBD3;
+  --line-strong: #B9BCB3;
+  --accent: #B8235A;
+  --accent-ink: #FFFFFF;
+  --hl: #B8235A;
+  --pass: #1D7650;
+  --warn: #9A4F00;
+  --band: #161A2C;
+  --band-raise: #22273D;
+  --band-ink: #EEF0F4;
+  --band-muted: #A9AEC0;
+  --band-line: #2E3450;
+  --band-accent: #F2669A;
+  --band-accent-ink: #1A0A12;
+  --weave-b: #161A2C;
+  --shadow: 0 1px 0 rgba(22, 26, 44, .04), 0 18px 40px -18px rgba(22, 26, 44, .22);
+
+  --f-display: "Anek Latin", "Anek Devanagari", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --f-body: "Mukta", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --f-mono: "Martian Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --gutter: clamp(16px, 4vw, 48px);
+  --max: 1200px;
+  --head-h: 68px;
+}
+/* Light is the default. Dark is opt-in through the theme button (or the viewer's explicit choice):
+   a monochrome black-and-grey palette. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #0A0A0A;
+  --surface: #141414;
+  --ink: #EDEDED;
+  --muted: #9E9E9E;
+  --line: #262626;
+  --line-strong: #3A3A3A;
+  --accent: #E6E6E6;
+  --accent-ink: #0A0A0A;
+  --hl: #8C8C8C;
+  --pass: #6CC08B;
+  --warn: #D9A25F;
+  --band: #111111;
+  --band-raise: #1A1A1A;
+  --band-ink: #EDEDED;
+  --band-muted: #9E9E9E;
+  --band-line: #2A2A2A;
+  --band-accent: #E6E6E6;
+  --band-accent-ink: #0A0A0A;
+  --weave-b: #3A3A3A;
+  --shadow: 0 1px 0 rgba(0, 0, 0, .4), 0 18px 44px -18px rgba(0, 0, 0, .8);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 1.0625rem/1.6 var(--f-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+p { margin: 0; }
+h1, h2, h3 {
+  margin: 0;
+  font-family: var(--f-display);
+  font-weight: 640;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+.band :focus-visible { outline-color: var(--band-accent); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+.wrap { max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
+.dev { font-family: "Anek Devanagari", "Noto Sans Devanagari", var(--f-body); font-weight: 600; }
+
+.skip {
+  position: absolute; left: 12px; top: -80px; z-index: 50;
+  background: var(--ink); color: var(--paper); padding: 10px 14px; border-radius: 4px;
+  font: 600 .95rem/1 var(--f-display); text-decoration: none;
+}
+.skip:focus { top: 12px; }
+
+/* Woven border, after the Maheshwari sarees of Khargone district */
+.weave {
+  height: 8px;
+  background: conic-gradient(var(--accent) 25%, var(--weave-b) 0 50%, var(--accent) 0 75%, var(--weave-b) 0) 0 0 / 12px 8px;
+}
+
+/* Header */
+.site-head {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  background: color-mix(in oklab, var(--paper) 88%, transparent);
+  -webkit-backdrop-filter: saturate(1.3) blur(12px);
+  backdrop-filter: saturate(1.3) blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color .2s;
+}
+.site-head.is-stuck { border-bottom-color: var(--line); }
+.head-row { display: flex; align-items: center; gap: 20px; min-height: var(--head-h); }
+.brand { display: inline-flex; align-items: baseline; gap: 10px; text-decoration: none; }
+.brand-lat { font: 800 1.4rem/1 var(--f-display); font-stretch: 125%; letter-spacing: .07em; }
+.brand-dev { font-size: 1.05rem; line-height: 1; color: var(--muted); }
+#site-nav { margin-left: auto; }
+#site-nav ul { display: flex; gap: 2px; list-style: none; margin: 0; padding: 0; }
+#site-nav a {
+  display: block; padding: 9px 12px; border-radius: 4px; text-decoration: none;
+  font: 500 1rem/1 var(--f-display); color: var(--muted);
+  transition: color .15s, background-color .15s;
+}
+#site-nav a:hover { color: var(--ink); background: color-mix(in oklab, var(--ink) 6%, transparent); }
+.head-actions { display: flex; align-items: center; gap: 8px; }
+.icon-btn {
+  width: 40px; height: 40px; display: inline-grid; place-items: center; flex: none;
+  border: 1px solid var(--line); border-radius: 4px; background: transparent; color: var(--ink); cursor: pointer;
+  transition: border-color .15s;
+}
+.icon-btn:hover { border-color: var(--line-strong); }
+.menu-btn { display: none; width: auto; padding-inline: 12px; font: 500 .95rem/1 var(--f-display); gap: 8px; grid-auto-flow: column; }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 20px; border-radius: 4px; border: 1.5px solid transparent;
+  font: 600 1.02rem/1 var(--f-display); text-decoration: none; cursor: pointer;
+  transition: background-color .2s, border-color .2s, color .2s;
+}
+.btn-sm { padding: 10px 14px; font-size: .95rem; }
+.btn-accent { background: var(--accent); color: var(--accent-ink); }
+.btn-accent:hover { background: color-mix(in oklab, var(--accent) 86%, var(--ink)); }
+.btn-ghost { background: transparent; color: var(--ink); border-color: var(--line-strong); }
+.btn-ghost:hover { border-color: var(--ink); }
+.btn .arr { transition: transform .2s; }
+.btn:hover .arr { transform: translateX(3px); }
+.band .btn-accent { background: var(--band-accent); color: var(--band-accent-ink); }
+.band .btn-accent:hover { background: color-mix(in oklab, var(--band-accent) 85%, var(--band-ink)); }
+.band .btn-ghost { color: var(--band-ink); border-color: var(--band-line); }
+.band .btn-ghost:hover { border-color: var(--band-ink); }
+
+.eyebrow {
+  font: 500 .75rem/1.4 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
+}
+.band .eyebrow { color: var(--band-muted); }
+
+/* Hero */
+.hero {
+  display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: clamp(36px, 5vw, 72px); align-items: start;
+  padding-block: clamp(48px, 7vw, 96px) clamp(64px, 8vw, 112px);
+}
+.hero h1 {
+  margin-top: 22px;
+  font-size: clamp(2.5rem, 5.3vw, 4.5rem); font-stretch: 106%; font-weight: 650; line-height: 1.0; letter-spacing: -0.02em;
+}
+.hero h1 .hl { color: var(--hl); }
+.lead { margin-top: 26px; max-width: 34em; font-size: 1.1875rem; line-height: 1.6; color: var(--muted); }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+.hero-tags {
+  display: flex; flex-wrap: wrap; gap: 8px 0; list-style: none; margin: 40px 0 0; padding: 0;
+  font: 400 .75rem/1.4 var(--f-mono); color: var(--muted);
+}
+.hero-tags li:not(:last-child)::after { content: "/"; margin-inline: 12px; color: var(--line-strong); }
+.hero-tags .dev { font-size: .95rem; line-height: 1; font-weight: 600; color: var(--ink); }
+
+/* Live readout */
+.readout {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow);
+  padding: 20px 22px 18px; font-family: var(--f-mono);
+}
+.ro-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.ro-title { font-size: .72rem; line-height: 1.4; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; }
+.ro-time { font-size: .68rem; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.ro-list { margin: 0; }
+.ro-row {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: center;
+  padding-block: 11px; border-bottom: 1px dashed var(--line);
+}
+.ro-row dt { font-size: .74rem; line-height: 1.4; color: var(--ink); }
+.ro-row dt small { display: block; margin-top: 2px; font-size: .64rem; color: var(--muted); }
+.ro-row dd { margin: 0; display: flex; align-items: center; gap: 10px; }
+.ro-v { font-size: .92rem; font-weight: 500; font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+.ro-mark {
+  width: 16px; height: 16px; flex: none; border-radius: 50%; display: inline-grid; place-items: center;
+  opacity: 0; transform: scale(.4); transition: opacity .25s, transform .3s cubic-bezier(.3, 1.6, .5, 1);
+}
+.is-ok .ro-mark, .is-bad .ro-mark { opacity: 1; transform: none; }
+.is-ok .ro-mark { background: var(--pass); }
+.is-ok .ro-mark::after {
+  content: ""; width: 7px; height: 4px; border-left: 1.75px solid var(--surface); border-bottom: 1.75px solid var(--surface);
+  transform: translateY(-1px) rotate(-45deg);
+}
+.is-bad .ro-mark { background: var(--warn); }
+.is-bad .ro-mark::after { content: "!"; font: 700 .62rem/1 var(--f-mono); color: var(--surface); }
+.ro-foot { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 16px; }
+.ro-foot p { font-size: .64rem; line-height: 1.5; color: var(--muted); max-width: 26em; }
+.ro-foot .btn { font-size: .85rem; padding: 9px 12px; flex: none; }
+
+/* Sections */
+.section { padding-block: clamp(72px, 9vw, 128px); }
+[id] { scroll-margin-top: calc(var(--head-h) + 12px); }
+.sec-head {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 18px 56px; align-items: end;
+  margin-bottom: clamp(36px, 5vw, 60px);
+}
+.sec-head h2 { margin-top: 14px; font-size: clamp(2rem, 3.9vw, 3.1rem); font-stretch: 104%; }
+.sec-intro { max-width: 34em; color: var(--muted); font-size: 1.0625rem; }
+.band .sec-intro { color: var(--band-muted); }
+
+/* Services */
+.svc-list { list-style: none; margin: 0; padding: 0; }
+.svc {
+  display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 5fr) minmax(0, 3fr); gap: 14px 44px;
+  padding-block: 30px; border-top: 1px solid var(--line);
+}
+.svc:last-child { border-bottom: 1px solid var(--line); }
+.svc h3 { font-size: clamp(1.45rem, 2.2vw, 1.75rem); font-weight: 600; line-height: 1.1; }
+.svc-for { margin-top: 10px; font: 400 .72rem/1.5 var(--f-mono); color: var(--muted); }
+.svc p.desc { color: var(--muted); max-width: 32em; }
+.svc ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; align-content: start; font: 400 .74rem/1.45 var(--f-mono); }
+.svc li { display: grid; grid-template-columns: 14px 1fr; gap: 6px; }
+.svc li::before { content: ""; width: 6px; height: 6px; margin-top: .45em; background: var(--accent); }
+.svc li .dev { font-size: .9rem; line-height: 1; }
+
+/* Work band */
+.band { background: var(--band); color: var(--band-ink); border-block: 1px solid var(--band-line); }
+.work-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 64px); align-items: start; }
+.frame { border: 1px solid var(--band-line); border-radius: 10px; overflow: hidden; background: var(--band-raise); box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .55); }
+.frame-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 9px 10px 9px 14px; background: var(--band-raise); border-bottom: 1px solid var(--band-line); }
+.frame-url { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font: 400 .7rem/1.4 var(--f-mono); color: var(--band-muted); }
+.frame-url b { font-weight: 500; color: var(--band-ink); }
+.seg { display: inline-flex; flex: none; padding: 3px; gap: 2px; border: 1px solid var(--band-line); border-radius: 6px; }
+.seg button {
+  border: 0; border-radius: 4px; padding: 6px 10px; cursor: pointer; background: transparent; color: var(--band-muted);
+  font: 500 .72rem/1 var(--f-mono); transition: background-color .2s, color .2s;
+}
+.seg button.dev { font-size: .9rem; line-height: .8; }
+.seg button[aria-pressed="true"] { background: var(--band-accent); color: var(--band-accent-ink); }
+.frame-shot { position: relative; aspect-ratio: 1200 / 750; max-width: 100%; background: #F6F4FB; }
+.frame-shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top left; opacity: 0; transition: opacity .35s ease; }
+.frame-shot img.is-on { opacity: 1; }
+.frame-cap { margin-top: 14px; font: 400 .7rem/1.6 var(--f-mono); color: var(--band-muted); max-width: 60em; }
+
+.work-facts { display: grid; gap: 28px; }
+.stats { margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 24px; }
+.stats div { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: 6px; padding-top: 14px; border-top: 1px solid var(--band-line); }
+.stats dd { margin: 0; font: 600 clamp(2.2rem, 3.6vw, 2.9rem)/1 var(--f-display); font-stretch: 110%; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.stats dd span { font-size: .45em; font-stretch: 100%; letter-spacing: 0; margin-left: 4px; color: var(--band-muted); }
+.stats dt { font-size: .92rem; line-height: 1.45; color: var(--band-muted); }
+.feat { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; font-size: 1rem; }
+.feat li { display: grid; grid-template-columns: 18px 1fr; gap: 8px; }
+.feat li::before { content: ""; width: 7px; height: 7px; margin-top: .6em; border: 1.5px solid var(--band-accent); transform: rotate(45deg); }
+.work-links { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* Partners */
+.partner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(32px, 6vw, 88px); align-items: start; }
+.partner h2 { margin-top: 14px; font-size: clamp(2rem, 3.9vw, 3.1rem); font-stretch: 104%; }
+.partner .sec-intro { margin-top: 22px; }
+.partner .btn { margin-top: 30px; }
+.promises { margin: 0; display: grid; }
+.promises div { padding-block: 20px; border-top: 1px solid var(--line); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 6px 28px; }
+.promises div:last-child { border-bottom: 1px solid var(--line); }
+.promises dt { font: 600 1.15rem/1.3 var(--f-display); }
+.promises dd { margin: 0; color: var(--muted); }
+
+/* Steps */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 44px 36px; }
+.steps li { position: relative; padding-top: 22px; border-top: 1px solid var(--line); }
+.steps li::before { content: ""; position: absolute; left: 0; top: -2px; width: 36px; height: 3px; background: var(--accent); }
+.step-n { font: 500 .72rem/1 var(--f-mono); letter-spacing: .06em; color: var(--accent); }
+.steps h3 { margin-top: 12px; font-size: 1.45rem; font-weight: 600; }
+.steps p { margin-top: 10px; color: var(--muted); }
+
+/* Standards */
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+table { width: 100%; min-width: 680px; border-collapse: collapse; font-size: 1rem; }
+th, td { text-align: left; vertical-align: top; padding: 16px 20px; border-bottom: 1px solid var(--line); }
+thead th { font: 500 .7rem/1.4 var(--f-mono); letter-spacing: .07em; text-transform: uppercase; color: var(--muted); background: color-mix(in oklab, var(--paper) 50%, var(--surface)); }
+tbody th { font: 600 1.08rem/1.3 var(--f-display); white-space: nowrap; }
+tbody td { color: var(--muted); line-height: 1.5; }
+tbody tr:last-child > * { border-bottom: 0; }
+
+/* Team */
+.team { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
+.person { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: clamp(22px, 3vw, 32px); display: grid; gap: 18px; align-content: start; }
+.person-top { display: flex; align-items: center; gap: 16px; }
+.mono-av {
+  width: 56px; height: 56px; flex: none; border-radius: 50%; display: grid; place-items: center;
+  background: color-mix(in oklab, var(--accent) 14%, var(--surface)); color: var(--accent);
+  font: 700 1.15rem/1 var(--f-display); font-stretch: 115%; letter-spacing: .04em;
+}
+.person h3 { font-size: 1.5rem; font-weight: 600; }
+.role { margin-top: 4px; font: 400 .72rem/1.4 var(--f-mono); color: var(--muted); letter-spacing: .04em; }
+.person p.bio { color: var(--muted); max-width: 40em; }
+.creds { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.creds li { font: 400 .7rem/1 var(--f-mono); padding: 8px 10px; border: 1px solid var(--line); border-radius: 4px; color: var(--ink); }
+
+.todo {
+  display: inline-block; font: 500 .74rem/1.4 var(--f-mono); color: var(--warn);
+  border: 1px dashed currentColor; border-radius: 4px; padding: 3px 8px;
+}
+.band .todo { color: var(--band-accent); }
+
+/* Contact */
+.contact { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 88px); align-items: start; }
+.contact h2 { margin-top: 14px; font-size: clamp(2.3rem, 4.6vw, 3.7rem); font-stretch: 106%; }
+.contact .sec-intro { margin-top: 22px; }
+.c-list { margin: 0; display: grid; }
+.c-list div { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 16px; padding-block: 18px; border-top: 1px solid var(--band-line); }
+.c-list div:last-child { border-bottom: 1px solid var(--band-line); }
+.c-list dt { font: 500 .72rem/1.9 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--band-muted); }
+.c-list dd { margin: 0; font-size: 1.08rem; }
+.c-val { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+.c-val a {
+  font: 600 clamp(1.2rem, 2vw, 1.45rem)/1.2 var(--f-display); font-variant-numeric: tabular-nums;
+  text-decoration: underline; text-decoration-color: var(--band-accent); text-decoration-thickness: 1.5px; text-underline-offset: 5px;
+}
+.c-val a:hover { color: var(--band-accent); }
+.copy-btn {
+  font: 500 .68rem/1 var(--f-mono); padding: 7px 10px; border: 1px solid var(--band-line); border-radius: 4px;
+  background: transparent; color: var(--band-muted); cursor: pointer; transition: color .15s, border-color .15s;
+}
+.copy-btn:hover { color: var(--band-ink); border-color: var(--band-muted); }
+.copy-btn.is-done { color: var(--band-accent); border-color: var(--band-accent); }
+
+/* Footer */
+.site-foot { background: var(--paper); }
+.foot-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) auto; gap: 28px 48px; padding-block: 44px 56px; align-items: start; }
+.foot-brand { display: flex; align-items: baseline; gap: 10px; }
+.foot-brand .brand-lat { font-size: 1.15rem; }
+.foot-def { margin-top: 10px; font-size: .95rem; color: var(--muted); }
+.foot-def i { color: var(--ink); }
+.foot-meta { display: grid; gap: 8px; font-size: .95rem; color: var(--muted); }
+.foot-nav ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.foot-nav a { font: 500 .95rem/1.4 var(--f-display); color: var(--muted); text-decoration: none; }
+.foot-nav a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+
+/* Responsive */
+@media (max-width: 960px) {
+  .menu-btn { display: inline-grid; }
+  #site-nav {
+    display: none; position: absolute; left: 0; right: 0; top: 100%;
+    background: var(--paper); border-bottom: 1px solid var(--line); padding: 8px var(--gutter) 16px;
+  }
+  #site-nav.open { display: block; }
+  #site-nav ul { flex-direction: column; }
+  #site-nav a { padding: 12px 4px; font-size: 1.1rem; }
+  .head-actions { margin-left: auto; }
+  .hero, .work-grid, .partner, .contact { grid-template-columns: minmax(0, 1fr); }
+  .sec-head { grid-template-columns: minmax(0, 1fr); align-items: start; }
+  .svc { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .svc > div:first-child { grid-column: 1 / -1; }
+  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .team { grid-template-columns: minmax(0, 1fr); }
+  .foot-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .foot-nav { grid-column: 1 / -1; }
+  .foot-nav ul { grid-auto-flow: column; justify-content: start; gap: 6px 20px; }
+}
+@media (max-width: 620px) {
+  .head-cta { display: none; }
+  .svc { grid-template-columns: minmax(0, 1fr); }
+  .steps { grid-template-columns: minmax(0, 1fr); }
+  .promises div { grid-template-columns: minmax(0, 1fr); }
+  .c-list div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .foot-grid { grid-template-columns: minmax(0, 1fr); }
+  .foot-nav ul { grid-auto-flow: row; }
+  .ro-foot { flex-direction: column; align-items: flex-start; }
+  .frame-url { display: none; }
+  .frame-bar { justify-content: flex-end; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+</style>
+</head>
+<body>
+<div class="site" id="site">
+<a class="skip" href="#main">Skip to content</a>
+<div class="weave" aria-hidden="true"></div>
+
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="brand" href="#top" aria-label="MOJUD, back to top">
+      <span class="brand-lat">MOJUD</span><span class="brand-dev dev" lang="hi">मौजूद</span>
+    </a>
+    <nav id="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#partners">For agencies</a></li>
+        <li><a href="#standards">Standards</a></li>
+        <li><a href="#team">Team</a></li>
+      </ul>
+    </nav>
+    <div class="head-actions">
+      <button class="icon-btn" id="theme-btn" type="button" aria-label="Switch to dark theme">
+        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg>
+      </button>
+      <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">
+        <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 17h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Menu
+      </button>
+      <a class="btn btn-accent btn-sm head-cta" href="#contact">Start a project</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero wrap" id="top" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow">Software studio · Madhya Pradesh, India</p>
+      <h1 id="hero-title">Websites for public institutions, <span class="hl">engineered like trading systems.</span></h1>
+      <p class="lead">MOJUD is a small engineering team led by an ICPC World Finalist who spent nearly three years building low-latency trading systems. We design and build accessible, bilingual websites and web portals for government bodies, universities and businesses, and we measure every page before it ships.</p>
+      <div class="cta-row">
+        <a class="btn btn-accent" href="#work">See our work <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="#contact">Talk to us</a>
+      </div>
+      <ul class="hero-tags" aria-label="What we build to">
+        <li>GIGW 3.0</li>
+        <li>WCAG 2.1 AA</li>
+        <li>English + <span class="dev" lang="hi">हिन्दी</span></li>
+        <li>Cloud MSP, hosted in India</li>
+      </ul>
+    </div>
+
+    <aside class="readout" aria-labelledby="ro-title">
+      <div class="ro-head">
+        <p class="ro-title" id="ro-title">This page, measured in your browser</p>
+        <p class="ro-time" id="ro-time" aria-live="polite">measuring…</p>
+      </div>
+      <dl class="ro-list">
+        <div class="ro-row" data-k="bytes"><dt>Transferred so far<small>HTML, CSS, fonts, images</small></dt><dd><span class="ro-v">—</span><span class="ro-mark" aria-hidden="true"></span><span class="sr ro-sr"></span></dd></div>
+        <div class="ro-row" data-k="requests"><dt>Requests</dt><dd><span class="ro-v">—</span><span class="ro-mark" aria-hidden="true"></span><span class="sr ro-sr"></span></dd></div>
+        <div class="ro-row" data-k="ready"><dt>Ready to use in</dt><dd><span class="ro-v">—</span><span class="ro-mark" aria-hidden="true"></span><span class="sr ro-sr"></span></dd></div>
+        <div class="ro-row" data-k="trackers"><dt>Tracking scripts</dt><dd><span class="ro-v">—</span><span class="ro-mark" aria-hidden="true"></span><span class="sr ro-sr"></span></dd></div>
+        <div class="ro-row" data-k="contrast"><dt>Lowest text contrast<small>WCAG AA needs 4.5 : 1</small></dt><dd><span class="ro-v">—</span><span class="ro-mark" aria-hidden="true"></span><span class="sr ro-sr"></span></dd></div>
+        <div class="ro-row" data-k="noalt"><dt>Images without alt text</dt><dd><span class="ro-v">—</span><span class="ro-mark" aria-hidden="true"></span><span class="sr ro-sr"></span></dd></div>
+        <div class="ro-row" data-k="unnamed"><dt>Unnamed links and buttons</dt><dd><span class="ro-v">—</span><span class="ro-mark" aria-hidden="true"></span><span class="sr ro-sr"></span></dd></div>
+        <div class="ro-row" data-k="skipped"><dt>Skipped heading levels</dt><dd><span class="ro-v">—</span><span class="ro-mark" aria-hidden="true"></span><span class="sr ro-sr"></span></dd></div>
+      </dl>
+      <div class="ro-foot">
+        <p>Read from your browser's Performance and DOM APIs. Nothing is sent anywhere.</p>
+        <button class="btn btn-ghost" id="ro-run" type="button">Run again</button>
+      </div>
+    </aside>
+  </section>
+
+  <section class="section wrap" id="services" aria-labelledby="services-title" style="padding-top: 0;">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Services</p>
+        <h2 id="services-title">What we do</h2>
+      </div>
+      <p class="sec-intro">Six kinds of work, often combined in one contract: design it, build it, move the old content across, host it and keep it running.</p>
+    </div>
+    <ol class="svc-list">
+      <li class="svc">
+        <div>
+          <h3>Government and institutional websites</h3>
+          <p class="svc-for">Ministries, councils, universities, PSUs</p>
+        </div>
+        <p class="desc">Websites built to GIGW 3.0 and WCAG 2.1 AA from the first page. English and Hindi are generated from one source, so the two versions never drift apart.</p>
+        <ul>
+          <li><span>GIGW pages and policies</span></li>
+          <li><span>English and <span class="dev" lang="hi">हिन्दी</span></span></li>
+          <li><span>DBIM and S3WaaS layouts</span></li>
+          <li><span>Tenders, recruitment, RTI</span></li>
+          <li><span>Support through STQC audit</span></li>
+        </ul>
+      </li>
+      <li class="svc">
+        <div>
+          <h3>Design and prototyping</h3>
+          <p class="svc-for">Before a line of production code</p>
+        </div>
+        <p class="desc">We build a working prototype first, with real navigation and real content in both languages. You make decisions on pages you can click through and share with your committee.</p>
+        <ul>
+          <li><span>Audit of the current site</span></li>
+          <li><span>Site structure and menus</span></li>
+          <li><span>Clickable prototype</span></li>
+          <li><span>Design system</span></li>
+        </ul>
+      </li>
+      <li class="svc">
+        <div>
+          <h3>Web portals and applications</h3>
+          <p class="svc-for">Forms, records, dashboards</p>
+        </div>
+        <p class="desc">Admission, recruitment, grievance and tender portals, dashboards and internal tools, with an admin panel your staff can run without calling us.</p>
+        <ul>
+          <li><span>Role-based admin</span></li>
+          <li><span>Online applications</span></li>
+          <li><span>Search and filters</span></li>
+          <li><span>Payment gateway integration</span></li>
+          <li><span>Reports and exports</span></li>
+        </ul>
+      </li>
+      <li class="svc">
+        <div>
+          <h3>Managed hosting and AMC</h3>
+          <p class="svc-for">We are your cloud MSP</p>
+        </div>
+        <p class="desc">We act as your managed service provider (MSP) on MeitY-empanelled cloud in India. We set up the servers, run and monitor them, and handle the cloud billing, so one vendor answers for both the website and its hosting. An annual maintenance contract covers content updates and fixes at an agreed response time.</p>
+        <ul>
+          <li><span>MSP on MeitY-empanelled cloud</span></li>
+          <li><span>One bill for site and hosting</span></li>
+          <li><span>SSL and firewall</span></li>
+          <li><span>Daily backups to a second region</span></li>
+          <li><span>Uptime monitoring</span></li>
+          <li><span>Content updates</span></li>
+        </ul>
+      </li>
+      <li class="svc">
+        <div>
+          <h3>Migration and Hindi content</h3>
+          <p class="svc-for">Old site to new, nothing lost</p>
+        </div>
+        <p class="desc">We move every page, file and link from your old site. Hindi typed in Krutidev and other legacy fonts is converted to Unicode so it can be searched and read aloud, and scanned PDFs become accessible pages.</p>
+        <ul>
+          <li><span>Krutidev to Unicode</span></li>
+          <li><span>PDF to accessible HTML</span></li>
+          <li><span>Redirects for old URLs</span></li>
+          <li><span>Content inventory</span></li>
+        </ul>
+      </li>
+      <li class="svc">
+        <div>
+          <h3>High-performance engineering</h3>
+          <p class="svc-for">When milliseconds matter</p>
+        </div>
+        <p class="desc">C++ and low-latency systems, data pipelines, and fixing slow websites and APIs. This is the work our founder did every day at a trading firm.</p>
+        <ul>
+          <li><span>C++ and low-latency systems</span></li>
+          <li><span>Kafka and Spark pipelines</span></li>
+          <li><span>Performance audits</span></li>
+          <li><span>Algorithms and optimisation</span></li>
+        </ul>
+      </li>
+    </ol>
+  </section>
+
+  <section class="section band" id="work" aria-labelledby="work-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Selected work · Ministry of Ayush tender</p>
+          <h2 id="work-title">A government website, built before the bid</h2>
+        </div>
+        <p class="sec-intro">For the Central Council for Research in Homoeopathy (CCRH) website tender, we built a working bilingual prototype of the new site as part of our tender response.</p>
+      </div>
+      <div class="work-grid">
+        <div>
+          <figure class="frame" style="margin: 0;">
+            <div class="frame-bar">
+              <span class="frame-url">vedanshugoyal.github.io/ccrh-prototype/<b id="frame-lang">en</b>/</span>
+              <div class="seg" role="group" aria-label="Show prototype in">
+                <button type="button" data-lang="en" aria-pressed="true">English</button>
+                <button type="button" data-lang="hi" aria-pressed="false" class="dev" lang="hi">हिन्दी</button>
+              </div>
+            </div>
+            <div class="frame-shot">
+              <img class="is-on" data-lang="en" src="assets/ccrh-en.webp" width="1200" height="750" loading="lazy" alt="CCRH prototype home page in English: Government of India bar, CCRH header with search, main menu, a pausable announcement ticker, the headline 'Advancing homoeopathy through scientific research' and a list of latest updates.">
+              <img data-lang="hi" src="assets/ccrh-hi.webp" width="1200" height="750" loading="lazy" alt="The same CCRH prototype home page in Hindi, with the menu, headline, buttons and figures in Devanagari.">
+            </div>
+          </figure>
+          <p class="frame-cap">Prepared for CCRH as part of a tender response. It is not the official CCRH website. Sample content was taken from ccrhindia.ayush.gov.in on 8 Oct 2026.</p>
+        </div>
+        <div class="work-facts">
+          <dl class="stats">
+            <div><dt>home page, against 9.4 MB on the current site</dt><dd>138<span>KB</span></dd></div>
+            <div><dt>accessibility violations (axe-core) on all 28 pages</dt><dd>0</dd></div>
+            <div><dt>third-party requests; fonts are self-hosted</dt><dd>0</dd></div>
+            <div><dt>institutes and units in one filterable finder</dt><dd>33</dd></div>
+          </dl>
+          <ul class="feat">
+            <li>14 pages in each language, built from one source</li>
+            <li>Header, menus and footer follow the S3WaaS / DBIM pattern</li>
+            <li>Instant search across pages, tenders, vacancies and publications</li>
+            <li>Tenders sorted into open, closed and archive by closing date</li>
+            <li>Text resize, high-contrast mode and a ticker you can pause</li>
+          </ul>
+          <div class="work-links">
+            <a class="btn btn-accent" href="https://vedanshugoyal.github.io/ccrh-prototype/" target="_blank" rel="noopener">Open the prototype <span class="arr" aria-hidden="true">↗</span></a>
+            <a class="btn btn-ghost" href="https://vedanshugoyal.github.io/ccrh-prototype/proposal.html" target="_blank" rel="noopener">Read the proposal</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap" id="partners" aria-labelledby="partners-title">
+    <div class="partner">
+      <div>
+        <p class="eyebrow">For IT firms and agencies</p>
+        <h2 id="partners-title">A build team for your government contracts</h2>
+        <p class="sec-intro">Government tenders ask for years of turnover and past government contracts. Firms that hold those credentials still need people to deliver the work. We join as your build team: you hold the contract and the client relationship, and we design, build, test and hand over.</p>
+        <a class="btn btn-accent" href="#contact">Discuss a partnership <span class="arr" aria-hidden="true">→</span></a>
+      </div>
+      <dl class="promises">
+        <div><dt>Your name on the work</dt><dd>We deliver under your brand and stay out of client meetings unless you bring us in.</dd></div>
+        <div><dt>Built to the tender</dt><dd>Every clause in the scope of work and the compliance sheet maps to a feature or a document you can point to.</dd></div>
+        <div><dt>Progress you can open</dt><dd>A staging link from the start, updated as we build, so you can show your client real pages at every review.</dd></div>
+        <div><dt>Complete handover</dt><dd>Source code, deployment notes, admin guides and every credential, handed to you at the end.</dd></div>
+        <div><dt>Hosting covered</dt><dd>When the tender includes hosting, we supply and run it as the MSP on MeitY-empanelled cloud, for the full contract term.</dd></div>
+        <div><dt>Confidential by default</dt><dd>We sign an NDA before reading anything that is not public.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section wrap" id="approach" aria-labelledby="approach-title" style="padding-top: 0;">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Approach</p>
+        <h2 id="approach-title">How a project runs</h2>
+      </div>
+      <p class="sec-intro">The same six steps whether the client is a ministry or a private company. Steps two to four repeat until the site passes every check.</p>
+    </div>
+    <ol class="steps">
+      <li><p class="step-n">STEP 1</p><h3>Read</h3><p>We go through the tender or brief and list every requirement in a compliance sheet.</p></li>
+      <li><p class="step-n">STEP 2</p><h3>Prototype</h3><p>A clickable site with real content in both languages, before the full build begins.</p></li>
+      <li><p class="step-n">STEP 3</p><h3>Build</h3><p>Accessible pages, an admin panel your staff can use, and a staging link throughout.</p></li>
+      <li><p class="step-n">STEP 4</p><h3>Audit</h3><p>axe-core and screen-reader checks, the GIGW 3.0 checklist and a security scan, before the formal audit.</p></li>
+      <li><p class="step-n">STEP 5</p><h3>Launch</h3><p>Deployed on MeitY-empanelled cloud that we manage as your MSP, with SSL, backups, monitoring and redirects from old URLs.</p></li>
+      <li><p class="step-n">STEP 6</p><h3>Maintain</h3><p>Content updates, patches and monthly reports under an annual maintenance contract.</p></li>
+    </ol>
+  </section>
+
+  <section class="section wrap" id="standards" aria-labelledby="standards-title" style="padding-top: 0;">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Standards</p>
+        <h2 id="standards-title">What we build to</h2>
+      </div>
+      <p class="sec-intro">Indian government websites are audited against these. We check our own work against them before any auditor does.</p>
+    </div>
+    <div class="table-wrap" role="region" aria-labelledby="standards-title" tabindex="0">
+      <table>
+        <thead>
+          <tr><th scope="col">Standard</th><th scope="col">What it covers</th><th scope="col">How we check it</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">GIGW 3.0</th><td>Guidelines for Indian Government Websites: content, policies, navigation, accessibility and security</td><td>Page-by-page checklist before handover</td></tr>
+          <tr><th scope="row">WCAG 2.1 AA · IS 17802</th><td>Web accessibility. IS 17802 is the Indian standard for accessible ICT</td><td>axe-core on every page, then keyboard and screen-reader runs</td></tr>
+          <tr><th scope="row">DBIM</th><td>Digital Brand Identity Manual: the shared header, footer, colours and type of government sites</td><td>Components built to the manual's specifications</td></tr>
+          <tr><th scope="row">Unicode Hindi</th><td>Hindi stored as text that can be searched, copied and read aloud</td><td>Legacy-font conversion and review by native Hindi speakers</td></tr>
+          <tr><th scope="row">CERT-In · OWASP</th><td>Security audit by a CERT-In empanelled auditor, and the OWASP Top 10 risks</td><td>Our own scan and fixes before the formal audit</td></tr>
+          <tr><th scope="row">Hosting in India</th><td>MeitY-empanelled cloud, with data kept in India</td><td>We manage the hosting as your MSP: SSL, backups and monitoring set up and tested by us</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section wrap" id="team" aria-labelledby="team-title" style="padding-top: 0;">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Team</p>
+        <h2 id="team-title">The engineers you will work with</h2>
+      </div>
+      <p class="sec-intro">You talk directly to the people writing the code. There is no account manager in between.</p>
+    </div>
+    <div class="team">
+      <article class="person">
+        <div class="person-top">
+          <span class="mono-av" aria-hidden="true">VG</span>
+          <div>
+            <h3>Vedanshu Goyal</h3>
+            <p class="role">Founder · Lead engineer</p>
+          </div>
+        </div>
+        <p class="bio">Vedanshu leads design and engineering. Before MOJUD he spent nearly three years writing low-latency C++ at a quantitative trading firm: the order management system, market-data feeds handling about a million messages a second, lock-free queues and memory pools. Before that he built Java and Spring backends and PySpark data pipelines.</p>
+        <ul class="creds" aria-label="Credentials">
+          <li>ICPC World Finalist 2023</li>
+          <li>B.Tech CSE, IIT Jodhpur</li>
+        </ul>
+      </article>
+      <article class="person">
+        <div class="person-top">
+          <span class="mono-av" aria-hidden="true">SS</span>
+          <div>
+            <h3>Sarthak Kumar Singh</h3>
+            <p class="role">Full-stack engineer</p>
+          </div>
+        </div>
+        <p class="bio">Sarthak builds the web applications and the backends behind them. He has over three years of full-stack experience with Node.js, React and AWS, on education services used by more than 100 million people.</p>
+        <ul class="creds" aria-label="Skills and education">
+          <li>Node.js · TypeScript</li>
+          <li>React</li>
+          <li>AWS</li>
+          <li>PostgreSQL · Redis</li>
+          <li>B.Tech CSE, IIT Jodhpur</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section band" id="contact" aria-labelledby="contact-title">
+    <div class="wrap contact">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-title">Tell us what you are building.</h2>
+        <p class="sec-intro">Send a tender number, a link to your current website, or a few lines about the project. We reply with questions, an approach and a rough timeline.</p>
+      </div>
+      <dl class="c-list">
+        <div><dt>Email</dt><dd class="c-val"><a href="mailto:team@mojud.life">team@mojud.life</a><button class="copy-btn" type="button" data-copy="team@mojud.life" data-what="Email address" aria-label="Copy email address">Copy</button></dd></div>
+        <div><dt>Phone</dt><dd class="c-val"><a href="tel:+919425326724">+91 94253 26724</a><button class="copy-btn" type="button" data-copy="+91 94253 26724" data-what="Phone number" aria-label="Copy phone number">Copy</button></dd></div>
+        <div><dt>Based in</dt><dd>Khargone, Madhya Pradesh. We work with clients across India.</dd></div>
+        <div><dt>Registered</dt><dd>Udyam-registered micro enterprise (MSME)</dd></div>
+      </dl>
+      <p class="sr" id="copy-status" aria-live="polite"></p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="weave" aria-hidden="true"></div>
+  <div class="wrap foot-grid">
+    <div>
+      <p class="foot-brand"><span class="brand-lat">MOJUD</span><span class="brand-dev dev" lang="hi">मौजूद</span></p>
+      <p class="foot-def"><i>maujūd</i>: present; ready at hand.</p>
+    </div>
+    <div class="foot-meta">
+      <p>© 2026 MOJUD. Udyam-registered micro enterprise, Khargone, Madhya Pradesh. <a href="mailto:team@mojud.life">team@mojud.life</a></p>
+      <p>This site is hand-written HTML, CSS and a little JavaScript. No framework, no cookies, no tracking.</p>
+    </div>
+    <nav class="foot-nav" aria-label="Footer">
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#partners">For agencies</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+</div>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var site = document.getElementById('site');
+  if (!root.lang) root.lang = 'en';
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Theme */
+  var themeBtn = document.getElementById('theme-btn');
+  try {
+    var saved = localStorage.getItem('mojud-theme');
+    if (saved && !root.hasAttribute('data-theme')) root.setAttribute('data-theme', saved);
+  } catch (e) {}
+  function isDark() { return root.getAttribute('data-theme') === 'dark'; }
+  function syncTheme() {
+    themeBtn.setAttribute('aria-label', isDark() ? 'Switch to light theme' : 'Switch to dark theme');
+    if (lastRun) updateContrast();
+  }
+  themeBtn.addEventListener('click', function () {
+    var next = isDark() ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('mojud-theme', next); } catch (e) {}
+  });
+  new MutationObserver(syncTheme).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+  syncTheme();
+
+  /* Header */
+  var head = document.querySelector('.site-head');
+  function onScroll() { head.classList.toggle('is-stuck', window.scrollY > 8); }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  var menuBtn = document.getElementById('menu-btn');
+  var nav = document.getElementById('site-nav');
+  function setMenu(open) {
+    nav.classList.toggle('open', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+  }
+  menuBtn.addEventListener('click', function () { setMenu(!nav.classList.contains('open')); });
+  nav.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && nav.classList.contains('open')) { setMenu(false); menuBtn.focus(); }
+  });
+
+  /* Prototype language switch */
+  var segBtns = document.querySelectorAll('.seg button');
+  var shots = document.querySelectorAll('.frame-shot img');
+  segBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var lang = btn.getAttribute('data-lang');
+      segBtns.forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+      shots.forEach(function (img) { img.classList.toggle('is-on', img.getAttribute('data-lang') === lang); });
+      document.getElementById('frame-lang').textContent = lang;
+    });
+  });
+
+  /* Live readout */
+  var TRACKERS = /google-analytics\.com|googletagmanager\.com|doubleclick\.net|connect\.facebook\.net|facebook\.com\/tr|hotjar\.|clarity\.ms|segment\.(io|com)|mixpanel\.com|amplitude\.com|scorecardresearch\.com|quantserve\.com|taboola\.com|outbrain\.com/;
+  var TEXT_PAIRS = [
+    ['--ink', '--paper'], ['--muted', '--paper'], ['--accent', '--paper'], ['--hl', '--paper'],
+    ['--ink', '--surface'], ['--muted', '--surface'], ['--pass', '--surface'], ['--warn', '--paper'],
+    ['--accent-ink', '--accent'],
+    ['--band-ink', '--band'], ['--band-muted', '--band'], ['--band-accent', '--band'],
+    ['--band-muted', '--band-raise'], ['--band-accent-ink', '--band-accent']
+  ];
+
+  function hexToRgb(hex) {
+    hex = hex.trim().replace('#', '');
+    if (hex.length === 3) hex = hex.replace(/./g, '$&$&');
+    var n = parseInt(hex, 16);
+    return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+  }
+  function luminance(rgb) {
+    var c = rgb.map(function (v) {
+      v /= 255;
+      return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+    });
+    return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+  }
+  function lowestContrast() {
+    var cs = getComputedStyle(root);
+    var min = Infinity;
+    TEXT_PAIRS.forEach(function (p) {
+      var a = luminance(hexToRgb(cs.getPropertyValue(p[0])));
+      var b = luminance(hexToRgb(cs.getPropertyValue(p[1])));
+      var ratio = (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
+      if (ratio < min) min = ratio;
+    });
+    return min;
+  }
+  function accessibleName(el) {
+    var label = (el.getAttribute('aria-label') || '').trim();
+    if (label) return label;
+    var by = el.getAttribute('aria-labelledby');
+    if (by) {
+      var ref = document.getElementById(by);
+      if (ref && ref.textContent.trim()) return ref.textContent.trim();
+    }
+    if (el.labels && el.labels.length) return el.labels[0].textContent.trim();
+    var img = el.querySelector('img[alt]:not([alt=""])');
+    return el.textContent.trim() || (img && img.alt) || (el.getAttribute('title') || '').trim();
+  }
+
+  function measure() {
+    var navEntry = performance.getEntriesByType('navigation')[0];
+    var res = performance.getEntriesByType('resource');
+    var size = function (e) { return e.encodedBodySize || e.transferSize || 0; };
+    var bytes = navEntry && size(navEntry) ? size(navEntry) : new Blob([root.outerHTML]).size;
+    res.forEach(function (e) { bytes += size(e); });
+
+    var urls = res.map(function (e) { return e.name; });
+    document.querySelectorAll('script[src]').forEach(function (s) { urls.push(s.src); });
+    var trackers = urls.filter(function (u) { return TRACKERS.test(u); }).length;
+
+    var noAlt = Array.prototype.filter.call(site.querySelectorAll('img'), function (i) { return !i.hasAttribute('alt'); }).length;
+    var unnamed = Array.prototype.filter.call(
+      site.querySelectorAll('a[href], button, input:not([type="hidden"]), select, textarea'),
+      function (el) { return !accessibleName(el); }
+    ).length;
+
+    var skipped = 0, prev = 0;
+    site.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach(function (h) {
+      var level = +h.tagName.charAt(1);
+      if (prev && level > prev + 1) skipped++;
+      prev = level;
+    });
+
+    var ready = navEntry && navEntry.domContentLoadedEventEnd ? navEntry.domContentLoadedEventEnd : performance.now();
+    return {
+      bytes: bytes / 1024,
+      requests: res.length + 1,
+      ready: ready / 1000,
+      trackers: trackers,
+      contrast: lowestContrast(),
+      noalt: noAlt,
+      unnamed: unnamed,
+      skipped: skipped
+    };
+  }
+
+  var FORMAT = {
+    bytes: function (v) { return v >= 1024 ? (v / 1024).toFixed(2) + ' MB' : Math.round(v) + ' KB'; },
+    requests: function (v) { return String(Math.round(v)); },
+    ready: function (v) { return v.toFixed(2) + ' s'; },
+    trackers: function (v) { return String(Math.round(v)); },
+    contrast: function (v) { return v.toFixed(1) + ' : 1'; },
+    noalt: function (v) { return String(Math.round(v)); },
+    unnamed: function (v) { return String(Math.round(v)); },
+    skipped: function (v) { return String(Math.round(v)); }
+  };
+  var CHECK = {
+    trackers: function (v) { return v === 0; },
+    contrast: function (v) { return v >= 4.5; },
+    noalt: function (v) { return v === 0; },
+    unnamed: function (v) { return v === 0; },
+    skipped: function (v) { return v === 0; }
+  };
+
+  var rows = {};
+  document.querySelectorAll('.ro-row').forEach(function (row) { rows[row.getAttribute('data-k')] = row; });
+  var timeEl = document.getElementById('ro-time');
+  var lastRun = null;
+  var runToken = 0;
+
+  function settle(key, value) {
+    var row = rows[key];
+    row.querySelector('.ro-v').textContent = FORMAT[key](value);
+    if (!CHECK[key]) return;
+    var ok = CHECK[key](value);
+    row.classList.toggle('is-ok', ok);
+    row.classList.toggle('is-bad', !ok);
+    row.querySelector('.ro-sr').textContent = ok ? ', passes' : ', needs attention';
+  }
+  function updateContrast() {
+    lastRun.contrast = lowestContrast();
+    settle('contrast', lastRun.contrast);
+  }
+
+  function run() {
+    var m = measure();
+    var token = ++runToken;
+    lastRun = m;
+    timeEl.textContent = 'Measured ' + new Date().toLocaleTimeString('en-IN', { hour12: false });
+    var keys = Object.keys(rows);
+    if (reduceMotion) { keys.forEach(function (k) { settle(k, m[k]); }); return; }
+    keys.forEach(function (k) {
+      rows[k].classList.remove('is-ok', 'is-bad');
+      rows[k].querySelector('.ro-v').textContent = FORMAT[k](0);
+    });
+    var start = performance.now();
+    var DUR = 650, STAGGER = 90;
+    function frame(now) {
+      if (token !== runToken) return;
+      var done = true;
+      keys.forEach(function (k, i) {
+        var t = Math.min(1, Math.max(0, (now - start - i * STAGGER) / DUR));
+        if (t < 1) done = false;
+        var eased = 1 - Math.pow(1 - t, 3);
+        if (t >= 1) {
+          if (!rows[k].dataset.settled) { settle(k, m[k]); rows[k].dataset.settled = '1'; }
+        } else {
+          rows[k].querySelector('.ro-v').textContent = FORMAT[k](m[k] * eased);
+        }
+      });
+      if (!done) requestAnimationFrame(frame);
+    }
+    keys.forEach(function (k) { delete rows[k].dataset.settled; });
+    requestAnimationFrame(frame);
+  }
+
+  document.getElementById('ro-run').addEventListener('click', run);
+
+  /* Copy contact details */
+  var copyStatus = document.getElementById('copy-status');
+  document.querySelectorAll('.copy-btn').forEach(function (btn) {
+    var timer;
+    function done(msg) {
+      btn.textContent = msg;
+      btn.classList.add('is-done');
+      copyStatus.textContent = btn.getAttribute('data-what') + (msg === 'Copied' ? ' copied' : ' selected; press Ctrl+C to copy');
+      clearTimeout(timer);
+      timer = setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('is-done'); }, 1800);
+    }
+    btn.addEventListener('click', function () {
+      var text = btn.getAttribute('data-copy');
+      var selectIt = function () {
+        var range = document.createRange();
+        range.selectNodeContents(btn.previousElementSibling);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        done('Selected');
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { done('Copied'); }, selectIt);
+      } else {
+        selectIt();
+      }
+    });
+  });
+
+  function whenReady() {
+    var fonts = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+    fonts.then(function () { setTimeout(run, 120); });
+  }
+  if (document.readyState === 'complete') whenReady();
+  else window.addEventListener('load', whenReady);
+})();
+</script>
+</body>
+</html>
