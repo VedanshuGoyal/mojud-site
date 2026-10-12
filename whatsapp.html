@@ -248,6 +248,9 @@ h1, h2, h3 {
 
 /* Work band */
 .band { background: var(--band); color: var(--band-ink); border-block: 1px solid var(--band-line); }
+/* two dark bands in a row read as one: no divider between them */
+.band:has(+ .band) { border-bottom: 0; }
+.band + .band { border-top: 0; }
 .work-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 64px); align-items: start; }
 .frame { border: 1px solid var(--band-line); border-radius: 10px; overflow: hidden; background: var(--band-raise); box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .55); }
 .frame-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 9px 10px 9px 14px; background: var(--band-raise); border-bottom: 1px solid var(--band-line); }

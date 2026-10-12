@@ -249,6 +249,9 @@ h1, h2, h3 {
 
 /* Work band */
 .band { background: var(--band); color: var(--band-ink); border-block: 1px solid var(--band-line); }
+/* two dark bands in a row read as one: no divider between them */
+.band:has(+ .band) { border-bottom: 0; }
+.band + .band { border-top: 0; }
 .work-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 64px); align-items: start; }
 .frame { border: 1px solid var(--band-line); border-radius: 10px; overflow: hidden; background: var(--band-raise); box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .55); }
 .frame-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 9px 10px 9px 14px; background: var(--band-raise); border-bottom: 1px solid var(--band-line); }
@@ -627,6 +630,49 @@ tbody tr:last-child > * { border-bottom: 0; }
     </div>
   </section>
 
+  <section class="section band" id="work-groundwater" aria-labelledby="gw-title" style="padding-top: 0;">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Selected work · Public data, rebuilt</p>
+          <h2 id="gw-title">India's groundwater, every block on one fast map</h2>
+        </div>
+        <p class="sec-intro">We rebuilt the public side of CGWB's INGRES groundwater dashboard as a static site from its own public data: every assessment unit (7,961 in 2025-26) for 2024-25 and 2025-26, with the GEC-2015 working for each one.</p>
+      </div>
+      <div class="work-grid">
+        <div>
+          <figure class="frame" style="margin: 0;">
+            <div class="frame-bar">
+              <span class="frame-url">groundwater.mojud.life</span>
+            </div>
+            <div class="frame-shot">
+              <img class="is-on" src="assets/groundwater.webp" width="1200" height="750" loading="lazy" alt="Groundwater dashboard prototype: a map of India with assessment units shaded from Safe to Over-exploited, a legend with unit counts, and a panel for India showing a 59.99% stage of extraction, 414.90 BCM extractable resource and 248.88 BCM extraction.">
+            </div>
+          </figure>
+          <p class="frame-cap">A MOJUD prototype built on public INGRES data (CGWB, GEC-2015). It is not an official CGWB or INGRES website. Figures as published for 2025-26.</p>
+        </div>
+        <div class="work-facts">
+          <dl class="stats">
+            <div><dt>assessment units, each with its own calculation</dt><dd>7,961</dd></div>
+            <div><dt>of app code, against a 2.08 MB script on INGRES</dt><dd>37<span>KB</span></dd></div>
+            <div><dt>Lighthouse accessibility score, desktop and mobile</dt><dd>100</dd></div>
+            <div><dt>Madhya Pradesh blocks matching INGRES's own export</dt><dd>317<span>/317</span></dd></div>
+          </dl>
+          <ul class="feat">
+            <li>Click from India to a state, district and block; the rest of the map dims</li>
+            <li>"How this is calculated" for every block, with its published inputs</li>
+            <li>Search, a sortable table and CSV download</li>
+            <li>Two assessment years, with the change since the previous one</li>
+            <li>Light and dark themes, and a layout for phones</li>
+          </ul>
+          <div class="work-links">
+            <a class="btn btn-accent" href="https://groundwater.mojud.life/" target="_blank" rel="noopener">Open the dashboard <span class="arr" aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section wrap" id="partners" aria-labelledby="partners-title">
     <div class="partner">
       <div>
@@ -819,8 +865,8 @@ tbody tr:last-child > * { border-bottom: 0; }
   });
 
   /* Prototype language switch */
-  var segBtns = document.querySelectorAll('.seg button');
-  var shots = document.querySelectorAll('.frame-shot img');
+  var segBtns = document.querySelectorAll('#work .seg button');
+  var shots = document.querySelectorAll('#work .frame-shot img');
   segBtns.forEach(function (btn) {
     btn.addEventListener('click', function () {
       var lang = btn.getAttribute('data-lang');
