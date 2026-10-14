@@ -267,6 +267,8 @@ h1, h2, h3 {
 .frame-shot { position: relative; aspect-ratio: 1200 / 750; max-width: 100%; background: #F6F4FB; }
 .frame-shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top left; opacity: 0; transition: opacity .35s ease; }
 .frame-shot img.is-on { opacity: 1; }
+.frame-video { aspect-ratio: 16 / 9; background: #0b1220; }
+.frame-video video { display: block; width: 100%; height: 100%; object-fit: contain; }
 .frame-cap { margin-top: 14px; font: 400 .7rem/1.6 var(--f-mono); color: var(--band-muted); max-width: 60em; }
 
 .work-facts { display: grid; gap: 28px; }
@@ -624,6 +626,52 @@ tbody tr:last-child > * { border-bottom: 0; }
           <div class="work-links">
             <a class="btn btn-accent" href="https://vedanshugoyal.github.io/ccrh-prototype/" target="_blank" rel="noopener">Open the prototype <span class="arr" aria-hidden="true">↗</span></a>
             <a class="btn btn-ghost" href="https://vedanshugoyal.github.io/ccrh-prototype/proposal.html" target="_blank" rel="noopener">Read the proposal</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band" id="work-spup" aria-labelledby="spup-title" style="padding-top: 0;">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Selected work · University website with a CMS</p>
+          <h2 id="spup-title">A university website its own staff can run</h2>
+        </div>
+        <p class="sec-intro">For the website tender of Sardar Patel University of Police, Security and Criminal Justice, Jodhpur, we built a working site with a content-management system. Department editors draft, the Registrar's office approves, and the public site updates on the next page load.</p>
+      </div>
+      <div class="work-grid">
+        <div>
+          <figure class="frame" style="margin: 0;">
+            <div class="frame-bar">
+              <span class="frame-url">spup.mojud.life · demo video, 3:44</span>
+            </div>
+            <div class="frame-video">
+              <video controls preload="none" playsinline poster="assets/spup-poster.webp" width="1200" height="675" aria-label="Demo video of the SPUP website prototype and its admin panel, with Hinglish voice-over and on-screen captions">
+                <source src="assets/spup-demo.mp4" type="video/mp4">
+                <a href="assets/spup-demo.mp4">Download the demo video (MP4, 19 MB)</a>
+              </video>
+            </div>
+          </figure>
+          <p class="frame-cap">Prepared for SPUP as part of a tender response. It is not the official SPUP website. Content was taken from policeuniversity.ac.in on 13 Oct 2026. The video has a Hinglish voice-over and English captions.</p>
+        </div>
+        <div class="work-facts">
+          <dl class="stats">
+            <div><dt>home page first load, against ~2.1 MB on the current site</dt><dd>320<span>KB</span></dd></div>
+            <div><dt>Lighthouse accessibility score, desktop and mobile</dt><dd>100</dd></div>
+            <div><dt>from an approver's publish to the change on the public site</dt><dd>~1<span>s</span></dd></div>
+            <div><dt>real notices moved over, filterable by category, programme and year</dt><dd>206</dd></div>
+          </dl>
+          <ul class="feat">
+            <li>Editors draft and submit; only approvers can publish, enforced on the server</li>
+            <li>Version history and an audit log of every change</li>
+            <li>English and Hindi edited side by side in one CMS</li>
+            <li>Tenders move to the archive by themselves after the closing date</li>
+            <li>Grievances get a ticket number that students can track</li>
+          </ul>
+          <div class="work-links">
+            <a class="btn btn-accent" href="https://spup.mojud.life/" target="_blank" rel="noopener">Open the prototype <span class="arr" aria-hidden="true">↗</span></a>
           </div>
         </div>
       </div>
